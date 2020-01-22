@@ -25,6 +25,8 @@ public class Stories {
     private String resourceUrl;
     private String type;
     private LocalDate modified;
+    @OneToOne
+    private Image thumbnail;
     @ManyToMany(mappedBy = "stories")
     private List<Comic> comics;
     @ManyToMany
@@ -39,6 +41,11 @@ public class Stories {
     private List<Event> events;
     @ManyToMany(mappedBy = "stories")
     private List<Character> characters;
+    @ManyToMany
+    @JoinTable(name = "Stories_Creators",
+            joinColumns = @JoinColumn(name = "stories_id"),
+            inverseJoinColumns = @JoinColumn(name = "creators_id"))
+    private List<Creators> creators;
     @OneToOne
     private ComicSumary originalisuue;
 }

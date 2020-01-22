@@ -30,6 +30,8 @@ public class Series {
     private int endYear;
     private String rating;
     private LocalDate modified;
+    @OneToOne
+    private Image thumbnail;
     @ManyToMany(mappedBy = "series")
     private List<Comic> comics;
     @ManyToMany(mappedBy = "series")
@@ -38,6 +40,11 @@ public class Series {
     private List<Event> events;
     @ManyToMany(mappedBy = "stories")
     private List<Character> characters;
+    @ManyToMany
+    @JoinTable(name = "Series_Creators",
+            joinColumns = @JoinColumn(name = "series_id"),
+            inverseJoinColumns = @JoinColumn(name = "creators_id"))
+    private List<Creators> creators;
     @OneToOne
     private EventSumary next;
     @OneToOne

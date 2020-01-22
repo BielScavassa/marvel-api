@@ -23,6 +23,11 @@ public class Character {
 	private String description;
 	private LocalDate modified;
 	private String resourceURI;
+	@OneToMany
+	@OrderColumn(name = "url_id")
+	private Url[] url = new Url[10];
+	@OneToOne
+	private Image thumbnail;
 	@ManyToMany
 	@JoinTable(name="Character_Comics",
 			joinColumns =@JoinColumn(name  = "character_id"),

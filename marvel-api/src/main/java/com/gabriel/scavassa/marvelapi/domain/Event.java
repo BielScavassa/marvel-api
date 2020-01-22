@@ -29,6 +29,8 @@ public class Event {
     private LocalDate modified;
     private LocalDate start;
     private LocalDate end;
+    @OneToOne
+    private Image thumbnail;
     @ManyToMany(mappedBy = "events")
     private List<Comic> comics;
     @ManyToMany(mappedBy = "events")
@@ -40,6 +42,11 @@ public class Event {
     private List<Series> series;
     @ManyToMany(mappedBy = "events")
     private List<Character> characters;
+    @ManyToMany
+    @JoinTable(name="Event_Creators",
+            joinColumns =@JoinColumn(name  = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "creators_id"))
+    private List<Creators> creators;
     @OneToOne
     private EventSumary next;
     @OneToOne

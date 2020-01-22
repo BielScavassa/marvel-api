@@ -54,10 +54,20 @@ public class Comic {
     private ComicSumary[] collectedissues = new ComicSumary[10];
     @OneToMany
     @OrderColumn(name = "comic_date_id")
-    private ComicDate[] comicDate = new ComicDate[10];
+    private ComicDate[] dates = new ComicDate[10];
     @OneToMany
     @OrderColumn(name = "comic_price_id")
-    private ComicPrice[] comicPrice = new ComicPrice[10];
+    private ComicPrice[] prices = new ComicPrice[10];
+    @OneToOne
+    private Image thumbnail;
+    @OneToMany
+    @OrderColumn(name = "thumbnail_id")
+    private Image[] images = new Image[10];
+    @ManyToMany
+    @JoinTable(name="Comic_Creators",
+            joinColumns =@JoinColumn(name  = "comic_id"),
+            inverseJoinColumns = @JoinColumn(name = "creators_id"))
+    private List<Creators> creators;
     @ManyToMany(mappedBy = "comics")
     private List<Character> characters;
     @ManyToMany

@@ -9,7 +9,10 @@ import com.gabriel.scavassa.marvelapi.domain.comic.TextObjects;
 import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import com.gabriel.scavassa.marvelapi.domain.summaries.EventSumary;
 import com.gabriel.scavassa.marvelapi.repository.*;
-import com.gabriel.scavassa.marvelapi.repository.comic.*;
+import com.gabriel.scavassa.marvelapi.repository.comic.ComicDateRepository;
+import com.gabriel.scavassa.marvelapi.repository.comic.ComicPriceRepository;
+import com.gabriel.scavassa.marvelapi.repository.comic.ComicRepository;
+import com.gabriel.scavassa.marvelapi.repository.comic.TextObjectsRepository;
 import com.gabriel.scavassa.marvelapi.repository.summaries.ComicSumaryRepository;
 import com.gabriel.scavassa.marvelapi.repository.summaries.EventSumaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,8 @@ public class MarvelApiApplication implements CommandLineRunner {
     @Autowired
     private UrlRepository urlRepository;
     @Autowired
+    private ImageRepository imageRepository;
+    @Autowired
     private ComicSumaryRepository comicSumaryRepository;
     @Autowired
     private TextObjectsRepository textObjectsRepository;
@@ -53,14 +58,21 @@ public class MarvelApiApplication implements CommandLineRunner {
     private EventRepository eventRepository;
     @Autowired
     private SeriesRepository seriesRepository;
+    @Autowired
+    private CreatorsRepository creatorsRepository;
 
 
     @Override
     public void run(String... args) throws Exception {
 
-        Url urlArray[] = new Url[10];
+        Url[] urlArray = new Url[10];
         Url url = new Url(null, "Urls", "Https://hulkurls ");
         urlArray[0] = url;
+
+        Image[] images = new Image[10];
+        Image thumbnail = new Image(null, "Https://imageurl", "C://hulk/images");
+        images[0] = thumbnail;
+
 
         ComicSumary variantsArray[] = new ComicSumary[10];
         ComicSumary variants = new ComicSumary(null, "Https://ressourceVariantsUri", "Canonic variant");
@@ -90,31 +102,37 @@ public class MarvelApiApplication implements CommandLineRunner {
         EventSumary next = new EventSumary(null, "Https://ressourcenextEventUri", "Hulk event 2.0");
         EventSumary previous = new EventSumary(null, "Https://ressourcePreviouseEventUri", "Hulk event with avangers");
 
+        List<Creators> hulkCreatorsList = new ArrayList<>();
+        Creators hulkCreators = new Creators(null, "First Name", "Middle Name", "Last Name", "Suffix", "Hulk Creator", LocalDate.now(), "Https://hulkCreator", null, thumbnail, null, null, null, null);
+        hulkCreatorsList.add(hulkCreators);
+
         List<Series> hulkSeeriesList = new ArrayList<>();
-        Series hulkSeries = new Series(null, "Hulk Series", "Series for hulk", "Https://hulkSeries", urlArray, 2002, 2005, "14", LocalDate.now(), null, null, null, null, next, previous);
+        Series hulkSeries = new Series(null, "Hulk Series", "Series for hulk", "Https://hulkSeries", urlArray, 2002, 2005, "14", LocalDate.now(), thumbnail, null, null, null, null, hulkCreatorsList, next, previous);
         hulkSeeriesList.add(hulkSeries);
 
         List<Event> hulkEventList = new ArrayList<>();
-        Event hulkEvent = new Event(null, "Hulk Event", "Event for hulk", "Https://hulkevent", urlArray, LocalDate.now(), LocalDate.now(), LocalDate.now(), null, null, hulkSeeriesList, null, next, previous);
+        Event hulkEvent = new Event(null, "Hulk Event", "Event for hulk", "Https://hulkevent", urlArray, LocalDate.now(), LocalDate.now(), LocalDate.now(), thumbnail, null, null, hulkSeeriesList, null, hulkCreatorsList, next, previous);
         hulkEventList.add(hulkEvent);
 
         List<Stories> hulkStoriesList = new ArrayList<>();
-        Stories hulkStories = new Stories(null, "Hulk Storie", "A storie of hulk", "Https://hulkstorie", "Interior story", LocalDate.now(), null, hulkSeeriesList, hulkEventList, null, originalissue);
+        Stories hulkStories = new Stories(null, "Hulk Storie", "A storie of hulk", "Https://hulkstorie", "Interior story", LocalDate.now(), thumbnail, null, hulkSeeriesList, hulkEventList, null, hulkCreatorsList, originalissue);
         hulkStoriesList.add(hulkStories);
 
         List<Comic> hulkComicList = new ArrayList<>();
         Comic hulkComic = new Comic(null, 1, "Hulk Comic", 22.2, "Variant of Hulk", "Hulk Comic Smash!", LocalDate.now(), "isbn", "upc", "diamondCode", "ean", "issn", "comic", 2, textHulkComicArray, "Https://HulkComicUrl", urlArray
-                , variantsArray, collectionsArray, colectedissuesArray, comicDateArray, comicPriceArray, null, hulkStoriesList, hulkEventList, hulkSeeriesList);
+                , variantsArray, collectionsArray, colectedissuesArray, comicDateArray, comicPriceArray, thumbnail, images, hulkCreatorsList, null, hulkStoriesList, hulkEventList, hulkSeeriesList);
         hulkComicList.add(hulkComic);
 
-        Character hulk = new Character(null, "Hulk", "Green", LocalDate.now(), "Https://Hulk", hulkComicList, hulkStoriesList, hulkEventList, hulkSeeriesList);
+        Character hulk = new Character(null, "Hulk", "Green", LocalDate.now(), "Https://Hulk", urlArray, thumbnail, hulkComicList, hulkStoriesList, hulkEventList, hulkSeeriesList);
 
         comicPriceRepository.save(comicPrice);
         comicSumaryRepository.saveAll(Arrays.asList(variants, collections, colectedissues, originalissue));
         urlRepository.save(url);
+        imageRepository.save(thumbnail);
         comicDateRepository.save(comicDate);
         textObjectsRepository.save(textHulkComic);
         eventSumaryRepository.saveAll(Arrays.asList(previous, next));
+        creatorsRepository.save(hulkCreators);
         seriesRepository.save(hulkSeries);
         eventRepository.save(hulkEvent);
         storiesRepository.save(hulkStories);
