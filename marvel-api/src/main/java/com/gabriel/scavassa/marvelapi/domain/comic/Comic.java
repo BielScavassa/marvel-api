@@ -1,5 +1,9 @@
-package com.gabriel.scavassa.marvelapi.domain;
+package com.gabriel.scavassa.marvelapi.domain.comic;
 
+import com.gabriel.scavassa.marvelapi.domain.*;
+import com.gabriel.scavassa.marvelapi.domain.Character;
+import com.gabriel.scavassa.marvelapi.domain.Event;
+import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -61,6 +65,16 @@ public class Comic {
             joinColumns =@JoinColumn(name  = "comic_id"),
             inverseJoinColumns = @JoinColumn(name = "stories_id"))
     private List<Stories> stories;
+    @ManyToMany
+    @JoinTable(name="Comic_Events",
+            joinColumns =@JoinColumn(name  = "comic_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private List<Event> events;
+    @ManyToMany
+    @JoinTable(name="Comic_Series",
+            joinColumns =@JoinColumn(name  = "comic_id"),
+            inverseJoinColumns = @JoinColumn(name = "series_id"))
+    private List<Series> series;
 
 
 }

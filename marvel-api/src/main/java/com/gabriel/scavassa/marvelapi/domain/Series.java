@@ -1,7 +1,7 @@
 package com.gabriel.scavassa.marvelapi.domain;
 
 import com.gabriel.scavassa.marvelapi.domain.comic.Comic;
-import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
+import com.gabriel.scavassa.marvelapi.domain.summaries.EventSumary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "stories")
-public class Stories {
+@Table(name = "series")
+public class Series {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,22 +23,23 @@ public class Stories {
     private String title;
     private String description;
     private String resourceUrl;
-    private String type;
+    @OneToMany
+    @OrderColumn(name = "url_id")
+    private Url[] url = new Url[10];
+    private int startYear;
+    private int endYear;
+    private String rating;
     private LocalDate modified;
-    @ManyToMany(mappedBy = "stories")
+    @ManyToMany(mappedBy = "series")
     private List<Comic> comics;
-    @ManyToMany
-    @JoinTable(name = "Stories_Series",
-            joinColumns = @JoinColumn(name = "stories_id"),
-            inverseJoinColumns = @JoinColumn(name = "series_id"))
-    private List<Series> series;
-    @ManyToMany
-    @JoinTable(name = "Stories_Events",
-            joinColumns = @JoinColumn(name = "stories_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @ManyToMany(mappedBy = "series")
+    private List<Stories> stories;
+    @ManyToMany(mappedBy = "series")
     private List<Event> events;
     @ManyToMany(mappedBy = "stories")
     private List<Character> characters;
     @OneToOne
-    private ComicSumary originalisuue;
+    private EventSumary next;
+    @OneToOne
+    private EventSumary previous;
 }

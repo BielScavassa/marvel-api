@@ -1,23 +1,24 @@
-package com.gabriel.scavassa.marvelapi.domain;
+package com.gabriel.scavassa.marvelapi.domain.comic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comic_date")
-public class ComicDate {
+@Table(name = "text_objects")
+public class TextObjects {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comic_date_id")
+    @Column(name = "text_objects_id")
     private Long id;
     private String type;
-    private LocalDate date;
+    private String lenguage;
+    private String text;
+
 }

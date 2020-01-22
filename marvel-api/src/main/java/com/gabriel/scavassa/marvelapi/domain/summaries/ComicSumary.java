@@ -1,4 +1,4 @@
-package com.gabriel.scavassa.marvelapi.domain;
+package com.gabriel.scavassa.marvelapi.domain.summaries;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,14 +10,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comic_price")
-public class ComicPrice {
+@Table(name = "comic_sumary")
+public class ComicSumary {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comic_price_id")
+    @Column(name = "comic_sumary_id")
     private Long id;
-    private String type;
-    private float price;
-
+    private String resourceURI;
+    private String name;
 }

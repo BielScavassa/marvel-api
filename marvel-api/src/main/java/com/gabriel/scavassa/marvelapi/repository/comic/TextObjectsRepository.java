@@ -1,7 +1,6 @@
-package com.gabriel.scavassa.marvelapi.repository;
+package com.gabriel.scavassa.marvelapi.repository.comic;
 
-import com.gabriel.scavassa.marvelapi.domain.Character;
-import com.gabriel.scavassa.marvelapi.domain.TextObjects;
+import com.gabriel.scavassa.marvelapi.domain.comic.TextObjects;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

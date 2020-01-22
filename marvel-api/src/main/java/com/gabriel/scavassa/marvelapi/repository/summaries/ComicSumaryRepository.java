@@ -1,7 +1,6 @@
-package com.gabriel.scavassa.marvelapi.repository;
+package com.gabriel.scavassa.marvelapi.repository.summaries;
 
-import com.gabriel.scavassa.marvelapi.domain.ComicSumary;
-import com.gabriel.scavassa.marvelapi.domain.Url;
+import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
