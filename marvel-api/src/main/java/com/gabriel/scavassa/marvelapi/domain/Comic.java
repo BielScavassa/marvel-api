@@ -36,11 +36,31 @@ public class Comic {
     private TextObjects[] textObjects = new TextObjects[10];
     private String resourceURI;
     @OneToMany
+    @OrderColumn(name = "url_id")
+    private Url[] url = new Url[10];
+//    series
+    @OneToMany
+    @OrderColumn(name = "comic_sumary_id")
+    private ComicSumary[] variants = new ComicSumary[10];
+    @OneToMany
+    @OrderColumn(name = "comic_sumary_id")
+    private ComicSumary[] collections = new ComicSumary[10];
+    @OneToMany
+    @OrderColumn(name = "comic_sumary_id")
+    private ComicSumary[] collectedissues = new ComicSumary[10];
+    @OneToMany
     @OrderColumn(name = "comic_date_id")
-    private ComicDate comicDate[] = new ComicDate[10];
-//    private ComicPrice comicPrice[];
+    private ComicDate[] comicDate = new ComicDate[10];
+    @OneToMany
+    @OrderColumn(name = "comic_price_id")
+    private ComicPrice[] comicPrice = new ComicPrice[10];
     @ManyToMany(mappedBy = "comics")
     private List<Character> characters;
+    @ManyToMany
+    @JoinTable(name="Comic_Stories",
+            joinColumns =@JoinColumn(name  = "comic_id"),
+            inverseJoinColumns = @JoinColumn(name = "stories_id"))
+    private List<Stories> stories;
 
 
 }

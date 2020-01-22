@@ -27,8 +27,11 @@ public class Character {
 			joinColumns =@JoinColumn(name  = "character_id"),
 			inverseJoinColumns = @JoinColumn(name = "comic_id"))
 	private List<Comic> comics;
-//	@OneToMany
-//	private List<Stories > stories;
+	@ManyToMany
+	@JoinTable(name="Character_Stories",
+			joinColumns =@JoinColumn(name  = "character_id"),
+			inverseJoinColumns = @JoinColumn(name = "stories_id"))
+	private List<Stories > stories;
 //	@OneToMany
 //	private List<Events> events;
 //	@OneToMany
