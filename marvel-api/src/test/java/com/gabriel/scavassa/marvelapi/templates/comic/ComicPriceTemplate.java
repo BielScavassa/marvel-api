@@ -10,7 +10,7 @@ public class ComicPriceTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(ComicSumary.class).addTemplate("valid comic sumary", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
                 add("type", "Digital Price");
                 add("price", 35.00f);
                 ;

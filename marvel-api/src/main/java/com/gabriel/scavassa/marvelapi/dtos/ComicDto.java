@@ -10,11 +10,13 @@ import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import com.gabriel.scavassa.marvelapi.dtos.lists.*;
 import com.gabriel.scavassa.marvelapi.util.converters.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class ComicDto {
     private Integer id;
     private int digitalId;

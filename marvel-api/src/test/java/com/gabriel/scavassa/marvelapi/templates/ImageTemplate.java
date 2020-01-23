@@ -9,9 +9,9 @@ import com.gabriel.scavassa.marvelapi.domain.Url;
 public class ImageTemplate implements TemplateLoader {
     @Override
     public void load() {
-        Fixture.of(Image.class).addTemplate("valid image template", new Rule() {
+        Fixture.of(Image.class).addTemplate("valid image", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
                 add("type", "Https://imageurl");
                 add("extension", "C://hulk/images");
                 ;

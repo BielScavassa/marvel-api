@@ -3,16 +3,16 @@ package com.gabriel.scavassa.marvelapi.templates.summaries;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
-import com.gabriel.scavassa.marvelapi.dtos.summaries.SeriesSummary;
+import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 
-public class SerieSumaryTemplate implements TemplateLoader {
+public class ComicSummaryTemplate implements TemplateLoader {
     @Override
     public void load() {
-        Fixture.of(SeriesSummary.class).addTemplate("valid serie sumary", new Rule() {
+        Fixture.of(ComicSumary.class).addTemplate("valid comic summary", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
+                add("resourceURI", "Https://ressourceSumaryUri");
                 add("name", "Canonic Sumary");
-                add("type", "type");
                 ;
             }
         });

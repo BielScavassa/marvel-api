@@ -18,16 +18,17 @@ public class CharacterDtoTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(CharacterDto.class).addTemplate("valid character dto", new Rule() {
             {
+                add("id", 1);
                 add("name", "Hulk");
                 add("description", "Green");
-                add("modified", LocalDate.now());
+                add("modified", LocalDate.of(2020, 05, 05));
                 add("resourceURI", "Https://Hulk");
-                add("fullName", one(Url.class, "valid url"));
+                add("url", new Url[10]);
                 add("thumbnail", one(Image.class, "valid image"));
-                add("comicList", has(1).of(ComicList.class, "valid comic list"));
-                add("storieList", has(1).of(StorieList.class, "valid storie list"));
-                add("eventList", has(1).of(EventList.class, "valid event list"));
-                add("seriesList", has(1).of(SeriesList.class, "valid series list"));
+                add("comics", has(1).of(ComicList.class, "valid comic list"));
+                add("stories", has(1).of(StorieList.class, "valid storie list"));
+                add("events", has(1).of(EventList.class, "valid event list"));
+                add("series", has(1).of(SeriesList.class, "valid series list"));
             }
         });
     }

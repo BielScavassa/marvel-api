@@ -10,7 +10,7 @@ public class TextObjectsTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(TextObjects.class).addTemplate("valid text objects", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
                 add("type", "Text");
                 add("lenguage", "t-Br");
                 add("text", "Smash Smash and Smash");

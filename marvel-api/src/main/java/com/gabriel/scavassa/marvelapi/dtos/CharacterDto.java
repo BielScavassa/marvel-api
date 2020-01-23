@@ -12,12 +12,14 @@ import com.gabriel.scavassa.marvelapi.util.converters.EventsToEventsListConverte
 import com.gabriel.scavassa.marvelapi.util.converters.SeriesToSeriesListConverter;
 import com.gabriel.scavassa.marvelapi.util.converters.StoriesToStoriesListConverter;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class CharacterDto implements Serializable {
     private Integer id;
     private String name;
@@ -26,10 +28,10 @@ public class CharacterDto implements Serializable {
     private String resourceURI;
     private Url[] url = new Url[10];
     private Image thumbnail;
-    private List<ComicList> comicList;
-    private List<StorieList> storieList;
-    private List<EventList> eventList;
-    private List<SeriesList> seriesList;
+    private List<ComicList> comics;
+    private List<StorieList> stories;
+    private List<EventList> events;
+    private List<SeriesList> series;
 
     public CharacterDto(Character character) {
         this.id = character.getId();
@@ -39,10 +41,10 @@ public class CharacterDto implements Serializable {
         this.resourceURI = character.getResourceURI();
         this.url = character.getUrl();
         this.thumbnail = character.getThumbnail();
-        this.comicList = ComicsToComicsListConverter.comicsToComicList(character.getComics());
-        this.storieList = StoriesToStoriesListConverter.storiesToStorieList(character.getStories());
-        this.eventList = EventsToEventsListConverter.eventToEventList(character.getEvents());
-        this.seriesList = SeriesToSeriesListConverter.seriesToSeriesList(character.getSeries());
+        this.comics = ComicsToComicsListConverter.comicsToComicList(character.getComics());
+        this.stories = StoriesToStoriesListConverter.storiesToStorieList(character.getStories());
+        this.events = EventsToEventsListConverter.eventToEventList(character.getEvents());
+        this.series = SeriesToSeriesListConverter.seriesToSeriesList(character.getSeries());
     }
 
 }

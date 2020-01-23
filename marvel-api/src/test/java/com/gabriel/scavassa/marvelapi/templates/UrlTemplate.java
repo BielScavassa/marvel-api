@@ -8,9 +8,9 @@ import com.gabriel.scavassa.marvelapi.domain.Url;
 public class UrlTemplate implements TemplateLoader {
     @Override
     public void load() {
-        Fixture.of(Url.class).addTemplate("valid url template", new Rule() {
+        Fixture.of(Url.class).addTemplate("valid url", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
                 add("type", "Urls");
                 add("url", "Https://hulkurls");
             }

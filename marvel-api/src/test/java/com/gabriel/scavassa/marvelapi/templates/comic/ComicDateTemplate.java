@@ -12,7 +12,7 @@ public class ComicDateTemplate implements TemplateLoader {
     public void load() {
         Fixture.of(ComicSumary.class).addTemplate("valid comic sumary", new Rule() {
             {
-                add("id", null);
+                add("id", 1);
                 add("lenguage", "t-Br");
                 add("date", LocalDate.now());
                 ;
