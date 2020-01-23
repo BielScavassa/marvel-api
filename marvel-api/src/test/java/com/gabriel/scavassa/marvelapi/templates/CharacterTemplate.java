@@ -25,20 +25,6 @@ public class CharacterTemplate implements TemplateLoader {
                 add("events", has(1).of(Event.class, "valid event"));
                 add("series", has(1).of(Series.class, "valid series"));
             }
-        }).addTemplate("valid complete character", new Rule() {
-            {
-                add("id", 1);
-                add("name", "Hulk");
-                add("description", "Green");
-                add("modified", LocalDate.of(2020, 01, 23));
-                add("resourceURI", "Https://Hulk");
-                add("url", new Url[1]);
-                add("thumbnail", one(Image.class, "valid image"));
-                add("comics", has(1).of(Comic.class, "valid comic"));
-                add("stories", has(1).of(Stories.class, "valid stories"));
-                add("events", has(1).of(Event.class, "valid event"));
-                add("series", has(1).of(Series.class, "valid series"));
-            }
         });
     }
 }
