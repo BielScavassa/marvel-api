@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TextObjectsRepository extends JpaRepository<TextObjects, Long> {
+public interface TextObjectsRepository extends JpaRepository<TextObjects, Integer> {
 
 }

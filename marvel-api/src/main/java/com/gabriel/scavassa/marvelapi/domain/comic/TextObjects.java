@@ -16,7 +16,7 @@ public class TextObjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "text_objects_id")
-    private Long id;
+    private Integer id;
     private String type;
     private String lenguage;
     private String text;

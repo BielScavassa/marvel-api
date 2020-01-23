@@ -1,9 +1,11 @@
 package com.gabriel.scavassa.marvelapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gabriel.scavassa.marvelapi.domain.comic.Comic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,7 +20,7 @@ public class Character {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String name;
 	private String description;
 	private LocalDate modified;

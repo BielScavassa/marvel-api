@@ -17,7 +17,7 @@ public class ComicDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comic_date_id")
-    private Long id;
+    private Integer id;
     private String type;
     private LocalDate date;
 }

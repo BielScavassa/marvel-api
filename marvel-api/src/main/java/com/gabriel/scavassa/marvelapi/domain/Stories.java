@@ -5,6 +5,7 @@ import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ public class Stories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String title;
     private String description;
     private String resourceUrl;

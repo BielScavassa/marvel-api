@@ -18,8 +18,10 @@ import com.gabriel.scavassa.marvelapi.repository.summaries.EventSumaryRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
+@EnableWebMvc
 @EnableSpringDataWebSupport
 public class MarvelApiApplication implements CommandLineRunner {
 
@@ -66,7 +69,7 @@ public class MarvelApiApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Url[] urlArray = new Url[10];
-        Url url = new Url(null, "Urls", "Https://hulkurls ");
+        Url url = new Url(null, "Urls", "Https://hulkurls");
         urlArray[0] = url;
 
         Image[] images = new Image[10];
@@ -119,7 +122,7 @@ public class MarvelApiApplication implements CommandLineRunner {
         hulkStoriesList.add(hulkStories);
 
         List<Comic> hulkComicList = new ArrayList<>();
-        Comic hulkComic = new Comic(null, 1, "Hulk Comic", 22.2, "Variant of Hulk", "Hulk Comic Smash!", LocalDate.now(), "isbn", "upc", "diamondCode", "ean", "issn", "comic", 2, textHulkComicArray, "Https://HulkComicUrl", urlArray
+        Comic hulkComic = new Comic(null, 1, "HulkSmash", 22.2, "Variant of Hulk", "Hulk Comic Smash!", LocalDate.now(), "isbn", "upc", "diamondCode", "ean", "issn", "comic", 2, textHulkComicArray, "Https://HulkComicUrl", urlArray
                 , variantsArray, collectionsArray, colectedissuesArray, comicDateArray, comicPriceArray, thumbnail, images, hulkCreatorsList, null, hulkStoriesList, hulkEventList, hulkSeeriesList);
         hulkComicList.add(hulkComic);
 

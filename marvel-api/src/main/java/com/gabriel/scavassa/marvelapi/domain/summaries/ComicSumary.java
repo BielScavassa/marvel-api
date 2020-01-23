@@ -17,7 +17,7 @@ public class ComicSumary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comic_sumary_id")
-    private Long id;
+    private Integer id;
     private String resourceURI;
     private String name;
 }

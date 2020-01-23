@@ -17,7 +17,7 @@ public class EventSumary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_sumary_id")
-    private Long id;
+    private Integer id;
     private String resourceURI;
     private String name;
 }

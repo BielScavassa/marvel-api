@@ -1,8 +1,8 @@
 package com.gabriel.scavassa.marvelapi.domain.comic;
 
-import com.gabriel.scavassa.marvelapi.domain.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gabriel.scavassa.marvelapi.domain.Character;
-import com.gabriel.scavassa.marvelapi.domain.Event;
+import com.gabriel.scavassa.marvelapi.domain.*;
 import com.gabriel.scavassa.marvelapi.domain.summaries.ComicSumary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class Comic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private int digitalId;
     private String title;
     private double issueNumber;
@@ -42,7 +42,6 @@ public class Comic {
     @OneToMany
     @OrderColumn(name = "url_id")
     private Url[] url = new Url[10];
-//    series
     @OneToMany
     @OrderColumn(name = "comic_sumary_id")
     private ComicSumary[] variants = new ComicSumary[10];
@@ -64,25 +63,25 @@ public class Comic {
     @OrderColumn(name = "thumbnail_id")
     private Image[] images = new Image[10];
     @ManyToMany
-    @JoinTable(name="Comic_Creators",
-            joinColumns =@JoinColumn(name  = "comic_id"),
+    @JoinTable(name = "Comic_Creators",
+            joinColumns = @JoinColumn(name = "comic_id"),
             inverseJoinColumns = @JoinColumn(name = "creators_id"))
     private List<Creators> creators;
     @ManyToMany(mappedBy = "comics")
     private List<Character> characters;
     @ManyToMany
-    @JoinTable(name="Comic_Stories",
-            joinColumns =@JoinColumn(name  = "comic_id"),
+    @JoinTable(name = "Comic_Stories",
+            joinColumns = @JoinColumn(name = "comic_id"),
             inverseJoinColumns = @JoinColumn(name = "stories_id"))
     private List<Stories> stories;
     @ManyToMany
-    @JoinTable(name="Comic_Events",
-            joinColumns =@JoinColumn(name  = "comic_id"),
+    @JoinTable(name = "Comic_Events",
+            joinColumns = @JoinColumn(name = "comic_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
     private List<Event> events;
     @ManyToMany
-    @JoinTable(name="Comic_Series",
-            joinColumns =@JoinColumn(name  = "comic_id"),
+    @JoinTable(name = "Comic_Series",
+            joinColumns = @JoinColumn(name = "comic_id"),
             inverseJoinColumns = @JoinColumn(name = "series_id"))
     private List<Series> series;
 

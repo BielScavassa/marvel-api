@@ -19,7 +19,7 @@ public class Creators {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String firstName;
     private String middleName;
     private String lastName;

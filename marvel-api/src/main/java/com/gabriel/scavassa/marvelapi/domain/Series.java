@@ -1,10 +1,12 @@
 package com.gabriel.scavassa.marvelapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gabriel.scavassa.marvelapi.domain.comic.Comic;
 import com.gabriel.scavassa.marvelapi.domain.summaries.EventSumary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,7 +21,7 @@ public class Series {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String title;
     private String description;
     private String resourceUrl;

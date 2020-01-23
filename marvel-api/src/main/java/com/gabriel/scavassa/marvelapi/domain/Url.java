@@ -16,7 +16,7 @@ public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "url_id")
-    private Long id;
+    private Integer id;
     private String type;
     private String url;
 

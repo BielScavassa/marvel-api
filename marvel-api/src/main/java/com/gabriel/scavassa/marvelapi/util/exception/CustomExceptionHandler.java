@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @ControllerAdvice
 public class CustomExceptionHandler {
 
-	@ExceptionHandler(value = NaoEncontradoException.class)
+	@ExceptionHandler(value = NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public ErrorResponse exception(NaoEncontradoException exeption) {
+	public ErrorResponse exception(NotFoundException exeption) {
 		return new ErrorResponse("NaoEncontradoException", exeption.getMessage());
 	}
 }

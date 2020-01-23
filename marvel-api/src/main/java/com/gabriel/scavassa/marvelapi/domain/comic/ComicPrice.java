@@ -16,7 +16,7 @@ public class ComicPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comic_price_id")
-    private Long id;
+    private Integer id;
     private String type;
     private float price;
 
